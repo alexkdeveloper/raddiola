@@ -6,9 +6,6 @@
   <project_license>GPL-3.0+</project_license>
   <name>Raddiola</name>
   <summary>The simplest radio that can be</summary>
-  <description>
-    <p>Simple radio with a clear and concise interface. You can listen to your favorite stations, add new ones, edit existing ones and delete unnecessary ones. There are already 10 stations built into the radio.</p>
-  </description>
   <provides>
     <binary>com.github.alexkdeveloper.raddiola</binary>
   </provides>
@@ -21,6 +18,13 @@
     <image>https://raw.githubusercontent.com/alexkdeveloper/raddiola/main/data/screenshot.png</image>
     </screenshot>
   </screenshots>
+  <description>
+    <p>Simple radio with a clear and concise interface. You can listen to your favorite stations, add new ones, edit existing ones and delete unnecessary ones. There are already 10 stations built into the radio.</p>
+  </description>
+  <categories>
+    <category>GTK</category>
+    <category>Multimedia</category>
+  </categories>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">none</content_attribute>
     <content_attribute id="violence-fantasy">none</content_attribute>
@@ -51,6 +55,6 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="0.0.1" date="2020-10-17"/>
+    <release version="1.0.0" date="2020-10-17"/>
   </releases>
 </component>
