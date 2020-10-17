@@ -1,8 +1,8 @@
 # raddiola 
 
-Adds your awesome app description here!
+![screenshot.png](/data/screenshot.png)
 
-(maybe adds a screenshot, people loves screenshots!)
+Simple radio with a clear and concise interface. You can listen to your favorite stations, add new ones, edit existing ones and delete unnecessary ones. There are already 10 stations built into the radio.
 
 ## Get it from the elementary OS AppCenter!
 
