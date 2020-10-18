@@ -2,7 +2,7 @@
 project (
     'com.github.alexkdeveloper.raddiola',
     'vala', 'c',
-    version: '0.0.1'
+    version: '1.0.0'
 )
 
 # Translation module
