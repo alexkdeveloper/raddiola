@@ -18,9 +18,7 @@ add_project_arguments (
 dependencies = [
     dependency ('glib-2.0'),
     dependency ('gtk+-3.0'),
-    dependency ('granite'),
-    dependency ('gstreamer-1.0'),
-    dependency ('gstreamer-player-1.0')
+    dependency ('gstreamer-1.0')
 ]
 
 subdir ('src')
