@@ -6,5 +6,5 @@ GenericName=GenericName
 Exec=com.github.alexkdeveloper.raddiola %U
 Icon=com.github.alexkdeveloper.raddiola
 Terminal=false
-Categories=GTK;Multimedia;
+Categories=Audio;Music;Player;AudioVideo;GNOME;GTK;
 Keywords=Radio;Audio;Music;Player;
