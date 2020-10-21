@@ -41,6 +41,7 @@ private int mode;
           stack.set_transition_type (StackTransitionType.SLIDE_LEFT_RIGHT);
           add (stack);
         Gtk.HeaderBar headerbar = new Gtk.HeaderBar();
+        headerbar.get_style_context().add_class(Gtk.STYLE_CLASS_FLAT);
         headerbar.show_close_button = true;
         set_titlebar(headerbar);
         back_button = new Gtk.Button ();
