@@ -36,10 +36,6 @@ private int mode;
         }        
 
         construct {        
-          stack = new Stack();
-          stack.set_transition_duration (600);
-          stack.set_transition_type (StackTransitionType.SLIDE_LEFT_RIGHT);
-          add (stack);
         Gtk.HeaderBar headerbar = new Gtk.HeaderBar();
         headerbar.get_style_context().add_class(Gtk.STYLE_CLASS_FLAT);
         headerbar.show_close_button = true;
@@ -82,6 +78,10 @@ private int mode;
         headerbar.pack_end(play_button);
         set_widget_visible(back_button,false);
         set_widget_visible(stop_button,false);
+          stack = new Stack();
+          stack.set_transition_duration (600);
+          stack.set_transition_type (StackTransitionType.SLIDE_LEFT_RIGHT);
+          add (stack);
    list_store = new Gtk.ListStore(Columns.N_COLUMNS, typeof(string));
            tree_view = new TreeView.with_model(list_store);
            var text = new CellRendererText ();
@@ -95,7 +95,6 @@ private int mode;
         scroll.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
         scroll.add (this.tree_view);
    vbox_player_page = new Box(Orientation.VERTICAL,20);
-   vbox_player_page.pack_start(headerbar,false,true,0);
    vbox_player_page.pack_start(scroll,true,true,0);
    stack.add(vbox_player_page);
         entry_name = new Entry();
