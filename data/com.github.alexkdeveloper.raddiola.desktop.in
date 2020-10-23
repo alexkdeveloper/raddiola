@@ -2,7 +2,6 @@
 Type=Application
 Name=Raddiola
 Comment=Simple Radio
-GenericName=GenericName
 Exec=com.github.alexkdeveloper.raddiola %U
 Icon=com.github.alexkdeveloper.raddiola
 Terminal=false
