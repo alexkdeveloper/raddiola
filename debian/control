@@ -12,4 +12,4 @@ Standards-Version: 3.9.3
 Package: com.github.alexkdeveloper.raddiola
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: This is a Radio written in Vala using CMake build system.
+Description: This is a program written in Vala using CMake build system.
