@@ -38,15 +38,4 @@ cd build
 sudo ninja install && raddiola
 ```
 
-## Generating pot file
 
-```bash
-# after setting up meson build
-cd build
-
-# generates pot file
-sudo ninja raddiola-pot
-
-# to regenerate and propagate changes to every po file
-sudo ninja raddiola-update-po
-```
