@@ -41,22 +41,22 @@ private int mode;
         headerbar.show_close_button = true;
         set_titlebar(headerbar);
         back_button = new Gtk.Button ();
-            back_button.set_image (new Gtk.Image.from_icon_name ("go-previous", Gtk.IconSize.SMALL_TOOLBAR));
+            back_button.set_image (new Gtk.Image.from_icon_name ("go-previous-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             back_button.vexpand = false;
         add_button = new Gtk.Button ();
-            add_button.set_image (new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.SMALL_TOOLBAR));
+            add_button.set_image (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             add_button.vexpand = false;
         delete_button = new Gtk.Button ();
-            delete_button.set_image (new Gtk.Image.from_icon_name ("list-remove", Gtk.IconSize.SMALL_TOOLBAR));
+            delete_button.set_image (new Gtk.Image.from_icon_name ("list-remove-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             delete_button.vexpand = false;
         edit_button = new Gtk.Button ();
-            edit_button.set_image (new Gtk.Image.from_icon_name ("edit", Gtk.IconSize.SMALL_TOOLBAR));
+            edit_button.set_image (new Gtk.Image.from_icon_name ("document-edit-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             edit_button.vexpand = false;
         play_button = new Gtk.Button();
-            play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start", Gtk.IconSize.SMALL_TOOLBAR));
+            play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             play_button.vexpand = false;
         stop_button = new Gtk.Button();
-            stop_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop", Gtk.IconSize.SMALL_TOOLBAR));
+            stop_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             stop_button.vexpand = false;  
         back_button.set_tooltip_text("back");
         add_button.set_tooltip_text("add station");
@@ -98,7 +98,7 @@ private int mode;
    vbox_player_page.pack_start(scroll,true,true,0);
    stack.add(vbox_player_page);
         entry_name = new Entry();
-        entry_name.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear");
+        entry_name.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
         entry_name.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_name.set_text("");
@@ -109,7 +109,7 @@ private int mode;
         hbox_name.pack_start (label_name, false, true, 0);
         hbox_name.pack_start (entry_name, true, true, 0);
         entry_url = new Entry();
-        entry_url.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear");
+        entry_url.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
         entry_url.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_url.set_text("");
