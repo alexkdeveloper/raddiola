@@ -3,7 +3,7 @@
   "runtime": "io.elementary.Platform",
   "runtime-version": "6",
   "sdk": "io.elementary.Sdk",
-  "command": "com.github.alexkdeveloper.raddiola",
+  "command": "raddiola",
   "finish-args": [
      "--share=ipc",
      "--share=network",
@@ -26,7 +26,7 @@
   ],
   "modules": [
      {
-        "name": "Raddiola",
+        "name": "raddiola",
         "buildsystem": "meson",
         "sources": [
             {
