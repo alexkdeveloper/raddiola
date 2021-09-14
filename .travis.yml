@@ -1,0 +1,31 @@
+{
+  "language": "node_js",
+  "os": [
+    "linux"
+  ],
+  "dist": "xenial",
+  "node_js": [
+    "lts/*"
+  ],
+  "services": [
+    "docker"
+  ],
+  "addons": {
+    "apt": {
+      "sources": [
+        {
+          "name": "ubuntu-toolchain-r-test"
+        }
+      ],
+      "packages": [
+        "libstdc++-5-dev"
+      ]
+    }
+  },
+  "install": [
+    "npm i -g @elementaryos/houston"
+  ],
+  "script": [
+    "houston ci"
+  ]
+}
