@@ -9,8 +9,7 @@
      "--share=network",
      "--socket=fallback-x11",
      "--socket=wayland",
-     "--socket=pulseaudio",
-     "--filesystem=home"
+     "--socket=pulseaudio"
   ],
   "cleanup": [
      "/include",
