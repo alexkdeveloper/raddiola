@@ -128,7 +128,7 @@ private int mode;
         stack.add(vbox_edit_page);
         stack.visible_child = vbox_player_page;
         player = ElementFactory.make ("playbin", "play");
-   directory_path = Environment.get_home_dir()+"/.stations_for_radio_app";
+   directory_path = Environment.get_user_data_dir()+"/.stations_for_radio_app";
    GLib.File file = GLib.File.new_for_path(directory_path);
    if(!file.query_exists()){
      try{
