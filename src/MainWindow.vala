@@ -27,7 +27,7 @@ private int mode;
 
         public MainWindow(Gtk.Application application) {
             GLib.Object(application: application,
-                         title: "Raddiola",
+                         title: _("Raddiola"),
                          window_position: WindowPosition.CENTER,
                          resizable: true,
                          height_request: 500,
@@ -58,12 +58,12 @@ private int mode;
         stop_button = new Gtk.Button();
             stop_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop", Gtk.IconSize.SMALL_TOOLBAR));
             stop_button.vexpand = false;
-        back_button.set_tooltip_text("back");
-        add_button.set_tooltip_text("add station");
-        delete_button.set_tooltip_text("delete station");
-        edit_button.set_tooltip_text("edit station");
-        play_button.set_tooltip_text("play");
-        stop_button.set_tooltip_text("stop");
+        back_button.set_tooltip_text(_("Back"));
+        add_button.set_tooltip_text(_("Add station"));
+        delete_button.set_tooltip_text(_("Delete station"));
+        edit_button.set_tooltip_text(_("Edit station"));
+        play_button.set_tooltip_text(_("Play"));
+        stop_button.set_tooltip_text(_("Stop"));
         back_button.clicked.connect(on_back_clicked);
         add_button.clicked.connect(on_add_clicked);
         delete_button.clicked.connect(on_delete_dialog);
@@ -104,7 +104,7 @@ private int mode;
               entry_name.set_text("");
            }
         });
-        var label_name = new Label.with_mnemonic ("_Name:");
+        var label_name = new Label.with_mnemonic (_("_Name:"));
         var hbox_name = new Box (Orientation.HORIZONTAL, 20);
         hbox_name.pack_start (label_name, false, true, 0);
         hbox_name.pack_start (entry_name, true, true, 0);
@@ -115,7 +115,7 @@ private int mode;
               entry_url.set_text("");
            }
         });
-        var label_url = new Label.with_mnemonic ("_URL:");
+        var label_url = new Label.with_mnemonic (_("_URL:"));
         var hbox_url = new Box (Orientation.HORIZONTAL, 20);
         hbox_url.pack_start (label_url, false, true, 0);
         hbox_url.pack_start (entry_url, true, true, 0);
@@ -134,7 +134,7 @@ private int mode;
      try{
         file.make_directory();
      }catch(Error e){
-        stderr.printf ("Error: %s\n", e.message);
+        stderr.printf (_("Error: %s") + "\n", e.message);
      }
      create_default_stations();
    }
@@ -147,14 +147,14 @@ private int mode;
            TreeModel model;
            TreeIter iter;
            if (!selection.get_selected(out model, out iter)) {
-               alert("Choose a station");
+               alert(_("Please choose a station"));
                return;
            }
       string uri;
         try {
             FileUtils.get_contents (directory_path+"/"+item, out uri);
         } catch (Error e) {
-            stderr.printf ("Error: %s\n", e.message);
+            stderr.printf (_("Error: %s") + "\n", e.message);
         }
       player.uri = uri;
       player.set_state (State.PLAYING);
@@ -201,7 +201,7 @@ private int mode;
            TreeModel model;
            TreeIter iter;
            if (!selection.get_selected(out model, out iter)) {
-               alert("Choose a station");
+               alert(_("Please choose a station"));
                return;
            }
         stack.visible_child = vbox_edit_page;
@@ -212,19 +212,19 @@ private int mode;
         try {
             FileUtils.get_contents (directory_path+"/"+item, out url);
         } catch (Error e) {
-            stderr.printf ("Error: %s\n", e.message);
+            stderr.printf (_("Error: %s") + "\n", e.message);
         }
         entry_url.set_text(url);
    }
 
    private void on_ok_clicked(){
          if(is_empty(entry_name.get_text())){
-		    alert("Enter the name");
+		    alert(_("Please enter the name"));
                     entry_name.grab_focus();
                     return;
 		}
 		if(is_empty(entry_url.get_text())){
-		   alert("Enter the url");
+		   alert(_("Please enter the url"));
                    entry_url.grab_focus();
                    return;
 		}
@@ -235,24 +235,24 @@ private int mode;
 		if (select_file.get_basename() != edit_file.get_basename() && !edit_file.query_exists()){
                 FileUtils.rename(select_file.get_path(), edit_file.get_path());
                 if(!edit_file.query_exists()){
-                    alert("Rename failed");
+                    alert(_("Rename failed"));
                     return;
                 }
                 try {
                  FileUtils.set_contents (edit_file.get_path(), entry_url.get_text().strip());
               } catch (Error e) {
-                     stderr.printf ("Error: %s\n", e.message);
+                     stderr.printf (_("Error: %s") + "\n", e.message);
             }
             }else{
                 if (select_file.get_basename() != edit_file.get_basename()) {
-                    alert("A station with the same name already exists");
+                    alert(_("A station with the same name already exists"));
                     entry_name.grab_focus();
                     return;
                 }
                 try {
                  FileUtils.set_contents (edit_file.get_path(), entry_url.get_text().strip());
               } catch (Error e) {
-                     stderr.printf ("Error: %s\n", e.message);
+                     stderr.printf (_("Error: %s") + "\n", e.message);
              }
             }
             show_stations();
@@ -260,17 +260,17 @@ private int mode;
             case 1:
 	GLib.File file = GLib.File.new_for_path(directory_path+"/"+entry_name.get_text().strip());
         if(file.query_exists()){
-            alert("A station with the same name already exists");
+            alert(_("A station with the same name already exists"));
             entry_name.grab_focus();
             return;
         }
         try {
             FileUtils.set_contents (file.get_path(), entry_url.get_text().strip());
         } catch (Error e) {
-            stderr.printf ("Error: %s\n", e.message);
+            stderr.printf (_("Error: %s") + "\n", e.message);
         }
         if(!file.query_exists()){
-           alert("Add failed");
+           alert(_("Add failed"));
            return;
         }else{
            show_stations();
@@ -291,18 +291,18 @@ private int mode;
            TreeModel model;
            TreeIter iter;
            if (!selection.get_selected(out model, out iter)) {
-               alert("Choose a station");
+               alert(_("Please choose a station"));
                return;
            }
            GLib.File file = GLib.File.new_for_path(directory_path+"/"+item);
-         var dialog_delete_station = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, "Delete station "+file.get_basename()+" ?");
-         dialog_delete_station.set_title("Question");
+         var dialog_delete_station = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Delete station %s ?").printf(file.get_basename()));
+         dialog_delete_station.set_title(_("Question"));
          Gtk.ResponseType result = (ResponseType)dialog_delete_station.run ();
          dialog_delete_station.destroy();
          if(result==Gtk.ResponseType.OK){
          FileUtils.remove (directory_path+"/"+item);
          if(file.query_exists()){
-            alert("Delete failed");
+            alert(_("Delete failed"));
          }else{
              show_stations();
          }
@@ -361,13 +361,13 @@ private int mode;
             try {
                  FileUtils.set_contents (directory_path+"/"+name_station[i], url_station[i]);
               } catch (Error e) {
-                     stderr.printf ("Error: %s\n", e.message);
+                     stderr.printf (_("Error: %s") + "\n", e.message);
              }
           }
    }
    private void alert (string str){
           var dialog_alert = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, str);
-          dialog_alert.set_title("Message");
+          dialog_alert.set_title(_("Message"));
           dialog_alert.run();
           dialog_alert.destroy();
        }
