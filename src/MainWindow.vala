@@ -119,7 +119,7 @@ private int mode;
         var hbox_url = new Box (Orientation.HORIZONTAL, 20);
         hbox_url.pack_start (label_url, false, true, 0);
         hbox_url.pack_start (entry_url, true, true, 0);
-        var button_ok = new Button.with_label("OK");
+        var button_ok = new Button.with_label(_("OK"));
         button_ok.clicked.connect(on_ok_clicked);
         vbox_edit_page = new Box(Orientation.VERTICAL,20);
         vbox_edit_page.pack_start(hbox_name,false,true,0);

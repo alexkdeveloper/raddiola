@@ -1,106 +1,106 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# French translations for com.github.alexkdeveloper.raddiola package.
+# Copyright (C) 2021 THE com.github.alexkdeveloper.raddiola'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.alexkdeveloper.raddiola package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Nathan Bonnemains (@NathanBnm), 2021.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.alexkdeveloper.raddiola\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-18 13:26+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2021-10-18 13:15+0200\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
+"Language-Team: none\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/MainWindow.vala:30
 msgid "Raddiola"
-msgstr ""
+msgstr "Raddiola"
 
 #: src/MainWindow.vala:61
 msgid "Back"
-msgstr ""
+msgstr "Retour"
 
 #: src/MainWindow.vala:62
 msgid "Add station"
-msgstr ""
+msgstr "Ajouter une station"
 
 #: src/MainWindow.vala:63
 msgid "Delete station"
-msgstr ""
+msgstr "Supprimer la station"
 
 #: src/MainWindow.vala:64
 msgid "Edit station"
-msgstr ""
+msgstr "Modifier la station"
 
 #: src/MainWindow.vala:65
 msgid "Play"
-msgstr ""
+msgstr "Lecture"
 
 #: src/MainWindow.vala:66
 msgid "Stop"
-msgstr ""
+msgstr "Arrêt"
 
 #: src/MainWindow.vala:107
 msgid "_Name:"
-msgstr ""
+msgstr "_Nom :"
 
 #: src/MainWindow.vala:118
 msgid "_URL:"
-msgstr ""
+msgstr "_URL :"
 
 #: src/MainWindow.vala:122
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/MainWindow.vala:137 src/MainWindow.vala:157 src/MainWindow.vala:215
 #: src/MainWindow.vala:244 src/MainWindow.vala:255 src/MainWindow.vala:270
 #: src/MainWindow.vala:364
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Erreur : %s"
 
 #: src/MainWindow.vala:150 src/MainWindow.vala:204 src/MainWindow.vala:294
 msgid "Please choose a station"
-msgstr ""
+msgstr "Veuillez sélectionner une station"
 
 #: src/MainWindow.vala:222
 msgid "Please enter the name"
-msgstr ""
+msgstr "Veuillez entrer le nom"
 
 #: src/MainWindow.vala:227
 msgid "Please enter the url"
-msgstr ""
+msgstr "Veuillez entrer l'URL"
 
 #: src/MainWindow.vala:238
 msgid "Rename failed"
-msgstr ""
+msgstr "Échec du renommage"
 
 #: src/MainWindow.vala:248 src/MainWindow.vala:263
 msgid "A station with the same name already exists"
-msgstr ""
+msgstr "Une station avec le même nom existe déjà"
 
 #: src/MainWindow.vala:273
 msgid "Add failed"
-msgstr ""
+msgstr "Échec de l'ajout"
 
 #: src/MainWindow.vala:298
 #, c-format
 msgid "Delete station %s ?"
-msgstr ""
+msgstr "Supprimer la station %s ?"
 
 #: src/MainWindow.vala:299
 msgid "Question"
-msgstr ""
+msgstr "Question"
 
 #: src/MainWindow.vala:305
 msgid "Delete failed"
-msgstr ""
+msgstr "Échec de la suppression"
 
 #: src/MainWindow.vala:370
 msgid "Message"
-msgstr ""
+msgstr "Message"
