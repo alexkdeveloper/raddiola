@@ -37,6 +37,7 @@ private int mode;
 
         construct {
         Gtk.HeaderBar headerbar = new Gtk.HeaderBar();
+        get_style_context().add_class("rounded");
         headerbar.get_style_context().add_class(Gtk.STYLE_CLASS_FLAT);
         headerbar.show_close_button = true;
         set_titlebar(headerbar);
@@ -102,6 +103,7 @@ private int mode;
         entry_name.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_name.set_text("");
+              entry_name.grab_focus();
            }
         });
         var label_name = new Label.with_mnemonic (_("_Name:"));
@@ -113,6 +115,7 @@ private int mode;
         entry_url.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_url.set_text("");
+              entry_url.grab_focus();
            }
         });
         var label_url = new Label.with_mnemonic (_("_URL:"));
@@ -295,17 +298,25 @@ private int mode;
                return;
            }
            GLib.File file = GLib.File.new_for_path(directory_path+"/"+item);
-         var dialog_delete_station = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Delete station %s ?").printf(file.get_basename()));
-         dialog_delete_station.set_title(_("Question"));
-         Gtk.ResponseType result = (ResponseType)dialog_delete_station.run ();
-         dialog_delete_station.destroy();
-         if(result==Gtk.ResponseType.OK){
-         FileUtils.remove (directory_path+"/"+item);
+
+      var dialog_delete_station = new Granite.MessageDialog.with_image_from_icon_name (_("Question"), _("Delete station %s ?").printf (file.get_basename ()), "dialog-question", Gtk.ButtonsType.NONE);
+      dialog_delete_station.add_button (_("No"), 0);
+      dialog_delete_station.add_button (_("Delete"), 1);
+      dialog_delete_station.show_all ();
+      int result = dialog_delete_station.run ();
+      switch (result) {
+          case 0:
+              dialog_delete_station.destroy ();
+              break;
+          case 1:
+              FileUtils.remove (directory_path+"/"+item);
          if(file.query_exists()){
             alert(_("Delete failed"));
          }else{
              show_stations();
          }
+              dialog_delete_station.destroy ();
+              break;
       }
    }
 
@@ -366,10 +377,10 @@ private int mode;
           }
    }
    private void alert (string str){
-          var dialog_alert = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, str);
-          dialog_alert.set_title(_("Message"));
-          dialog_alert.run();
-          dialog_alert.destroy();
+          var dialog = new Granite.MessageDialog.with_image_from_icon_name (_("Message"), str, "dialog-warning");
+        dialog.show_all ();
+        dialog.run ();
+        dialog.destroy ();
        }
    }
 }
