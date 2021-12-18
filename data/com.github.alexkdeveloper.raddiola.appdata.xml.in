@@ -55,7 +55,7 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="1.0.1" date="2021-12-22">
+    <release version="1.0.1" date="2021-12-18">
    <description>
     <ul>
      <li>Update to elementary platform version 6.1</li>
