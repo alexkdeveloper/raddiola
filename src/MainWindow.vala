@@ -99,7 +99,7 @@ private int mode;
    vbox_player_page.pack_start(scroll,true,true,0);
    stack.add(vbox_player_page);
         entry_name = new Entry();
-        entry_name.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear");
+        entry_name.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
         entry_name.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_name.set_text("");
@@ -111,7 +111,7 @@ private int mode;
         hbox_name.pack_start (label_name, false, true, 0);
         hbox_name.pack_start (entry_name, true, true, 0);
         entry_url = new Entry();
-        entry_url.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear");
+        entry_url.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
         entry_url.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_url.set_text("");
