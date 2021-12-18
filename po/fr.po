@@ -104,3 +104,11 @@ msgstr "Échec de la suppression"
 #: src/MainWindow.vala:370
 msgid "Message"
 msgstr "Message"
+
+#: src/MainWindow.vala:303
+msgid "No"
+msgstr "Non"
+
+#: src/MainWindow.vala:304
+msgid "Delete"
+msgstr "Supprimer"
