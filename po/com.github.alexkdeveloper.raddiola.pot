@@ -104,3 +104,11 @@ msgstr ""
 #: src/MainWindow.vala:370
 msgid "Message"
 msgstr ""
+
+#: src/MainWindow.vala:303
+msgid "No"
+msgstr ""
+
+#: src/MainWindow.vala:304
+msgid "Delete"
+msgstr ""
