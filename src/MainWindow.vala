@@ -21,6 +21,9 @@ private Button delete_button;
 private Button edit_button;
 private Button play_button;
 private Button stop_button;
+private Button record_button;
+private Button stop_record_button;
+private Recorder recorder;
 private string directory_path;
 private string item;
 private int mode;
@@ -59,25 +62,44 @@ private int mode;
         stop_button = new Gtk.Button();
             stop_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop", Gtk.IconSize.SMALL_TOOLBAR));
             stop_button.vexpand = false;
+        record_button = new Gtk.Button();
+             record_button.set_image (new Gtk.Image.from_icon_name ("media-record", Gtk.IconSize.SMALL_TOOLBAR));
+             record_button.vexpand = false;
+        stop_record_button = new Gtk.Button();
+             stop_record_button.set_image (new Gtk.Image.from_icon_name ("process-stop", Gtk.IconSize.SMALL_TOOLBAR));
+             stop_record_button.vexpand = false;
+        var open_directory_button = new Gtk.Button();
+             open_directory_button.set_image (new Gtk.Image.from_icon_name ("folder-open", Gtk.IconSize.SMALL_TOOLBAR));
+             open_directory_button.vexpand = false;
         back_button.set_tooltip_text(_("Back"));
         add_button.set_tooltip_text(_("Add station"));
         delete_button.set_tooltip_text(_("Delete station"));
         edit_button.set_tooltip_text(_("Edit station"));
         play_button.set_tooltip_text(_("Play"));
         stop_button.set_tooltip_text(_("Stop"));
+        record_button.set_tooltip_text("Start recording");
+        stop_record_button.set_tooltip_text("Stop recording");
+        open_directory_button.set_tooltip_text("Open the Records folder");
         back_button.clicked.connect(on_back_clicked);
         add_button.clicked.connect(on_add_clicked);
         delete_button.clicked.connect(on_delete_dialog);
         edit_button.clicked.connect(on_edit_clicked);
+        record_button.clicked.connect(on_record_clicked);
+        stop_record_button.clicked.connect(on_stop_record_clicked);
+        open_directory_button.clicked.connect(on_open_directory_clicked);
         play_button.clicked.connect(on_play_station);
         stop_button.clicked.connect(on_stop_station);
         headerbar.pack_start(back_button);
         headerbar.pack_start(add_button);
         headerbar.pack_start(delete_button);
         headerbar.pack_start(edit_button);
+        headerbar.pack_end(open_directory_button);
+        headerbar.pack_end(record_button);
+        headerbar.pack_end(stop_record_button);
         headerbar.pack_end(stop_button);
         headerbar.pack_end(play_button);
         set_widget_visible(back_button,false);
+        set_widget_visible(stop_record_button, false);
         set_widget_visible(stop_button,false);
           stack = new Stack();
           stack.set_transition_duration (600);
@@ -107,9 +129,10 @@ private int mode;
            }
         });
         var label_name = new Label.with_mnemonic (_("_Name:"));
-        var hbox_name = new Box (Orientation.HORIZONTAL, 20);
-        hbox_name.pack_start (label_name, false, true, 0);
-        hbox_name.pack_start (entry_name, true, true, 0);
+        label_name.set_xalign(0);
+        var vbox_name = new Box (Orientation.VERTICAL, 5);
+        vbox_name.pack_start (label_name, false, true, 0);
+        vbox_name.pack_start (entry_name, true, true, 0);
         entry_url = new Entry();
         entry_url.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
         entry_url.icon_press.connect ((pos, event) => {
@@ -119,14 +142,15 @@ private int mode;
            }
         });
         var label_url = new Label.with_mnemonic (_("_URL:"));
-        var hbox_url = new Box (Orientation.HORIZONTAL, 20);
-        hbox_url.pack_start (label_url, false, true, 0);
-        hbox_url.pack_start (entry_url, true, true, 0);
+        label_url.set_xalign(0);
+        var vbox_url = new Box (Orientation.VERTICAL, 5);
+        vbox_url.pack_start (label_url, false, true, 0);
+        vbox_url.pack_start (entry_url, true, true, 0);
         var button_ok = new Button.with_label(_("OK"));
         button_ok.clicked.connect(on_ok_clicked);
-        vbox_edit_page = new Box(Orientation.VERTICAL,20);
-        vbox_edit_page.pack_start(hbox_name,false,true,0);
-        vbox_edit_page.pack_start(hbox_url,false,true,0);
+        vbox_edit_page = new Box(Orientation.VERTICAL,10);
+        vbox_edit_page.pack_start(vbox_name,false,true,0);
+        vbox_edit_page.pack_start(vbox_url,false,true,0);
         vbox_edit_page.pack_start(button_ok,false,true,0);
         stack.add(vbox_edit_page);
         stack.visible_child = vbox_player_page;
@@ -142,6 +166,8 @@ private int mode;
      create_default_stations();
    }
    show_stations();
+   recorder = Recorder.get_default ();
+   record_button.set_sensitive(false);
  }
 
    private void on_play_station(){
@@ -157,18 +183,57 @@ private int mode;
         try {
             FileUtils.get_contents (directory_path+"/"+item, out uri);
         } catch (Error e) {
-            stderr.printf (_("Error: %s") + "\n", e.message);
+            alert(e.message);
+            return;
         }
       player.uri = uri;
       player.set_state (State.PLAYING);
       set_widget_visible(play_button,false);
       set_widget_visible(stop_button,true);
+      record_button.set_sensitive(true);
    }
 
    private void on_stop_station(){
       player.set_state (State.READY);
       set_widget_visible(play_button,true);
       set_widget_visible(stop_button,false);
+      if(recorder.is_recording){
+          on_stop_record_clicked();
+      }
+      record_button.set_sensitive(false);
+   }
+
+   private void on_record_clicked(){
+    var selection = tree_view.get_selection();
+    selection.set_mode(SelectionMode.SINGLE);
+    TreeModel model;
+    TreeIter iter;
+    if (!selection.get_selected(out model, out iter)) {
+        alert(_("Please choose a station"));
+        return;
+    }
+    try {
+        recorder.start_recording();
+      } catch (Gst.ParseError e) {
+         alert(e.message);
+         return;
+      }
+      set_widget_visible(record_button,false);
+      set_widget_visible(stop_record_button,true);
+   }
+
+   private void on_stop_record_clicked(){
+        recorder.stop_recording();
+        set_widget_visible(record_button,true);
+        set_widget_visible(stop_record_button,false);
+   }
+
+   private void on_open_directory_clicked(){
+       try {
+         Gtk.show_uri_on_window(this, "file://"+Environment.get_user_data_dir(), Gdk.CURRENT_TIME);
+       } catch (Error e) {
+           alert(e.message);
+       }      
    }
 
    private void on_select_item () {
@@ -183,6 +248,7 @@ private int mode;
            var index = int.parse(path.to_string());
            if (index >= 0) {
                item = list.nth_data(index);
+               recorder.station_name = item;
            }
        }
 
