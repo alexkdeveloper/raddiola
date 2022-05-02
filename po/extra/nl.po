@@ -1,0 +1,55 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+#
+# Heimen Stoffels <vistausss@fastmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-18 13:24+0200\n"
+"PO-Revision-Date: 2022-05-02 17:24+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.04.0\n"
+
+#: data/com.github.alexkdeveloper.raddiola.desktop.in:4
+#: data/com.github.alexkdeveloper.raddiola.appdata.xml.in:7
+msgid "Raddiola"
+msgstr "Raddiola"
+
+#: data/com.github.alexkdeveloper.raddiola.desktop.in:5
+msgid "Simple Radio"
+msgstr "Eenvoudige radiotoepassing"
+
+#: data/com.github.alexkdeveloper.raddiola.desktop.in:7
+msgid "com.github.alexkdeveloper.raddiola"
+msgstr "com.github.alexkdeveloper.raddiola"
+
+#: data/com.github.alexkdeveloper.raddiola.desktop.in:10
+msgid "Radio;Audio;Music;Player;"
+msgstr "Radio;Audio;Muziek;Speler;"
+
+#: data/com.github.alexkdeveloper.raddiola.appdata.xml.in:8
+msgid "The simplest radio that can be"
+msgstr "De eenvoudigst denkbare radiotoepassing"
+
+#: data/com.github.alexkdeveloper.raddiola.appdata.xml.in:12
+msgid "Alex Kryuchkov"
+msgstr "Alex Kryuchkov"
+
+#: data/com.github.alexkdeveloper.raddiola.appdata.xml.in:22
+msgid ""
+"Simple radio with a clear and concise interface. You can listen to your "
+"favorite stations, add new ones, edit existing ones and delete unnecessary "
+"ones. There are already 10 stations built into the radio."
+msgstr ""
+"Een eenvoudige radiotoepassing, voorzien van een overzichtelijke vormgeving."
+" U kunt "
+"hiermee luisteren naar uw favoriete radiostations, nieuwe toevoegen,"
+" bestaande bewerken en "
+"overbodige verwijderen. De toepassing wordt geleverd met 10 radiostations."
