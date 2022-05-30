@@ -27,6 +27,13 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
+   <release version="1.1.2" date="2022-05-30">
+   <description>
+    <ul>
+     <li>Updating the initial list of default stations</li>
+    </ul>
+ </description>
+</release>
   <release version="1.1.1" date="2022-05-14">
    <description>
     <ul>
