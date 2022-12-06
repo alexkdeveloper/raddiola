@@ -1,7 +1,7 @@
 {
   "app-id": "com.github.alexkdeveloper.raddiola",
   "runtime": "io.elementary.Platform",
-  "runtime-version": "7",
+  "runtime-version": "7.1",
   "sdk": "io.elementary.Sdk",
   "command": "com.github.alexkdeveloper.raddiola",
   "finish-args": [
