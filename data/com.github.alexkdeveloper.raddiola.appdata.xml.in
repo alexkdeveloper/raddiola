@@ -28,6 +28,13 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
+  <release version="1.1.5" date="2022-12-22">
+   <description>
+    <ul>
+     <li>Improved operation of the station list</li>
+    </ul>
+ </description>
+</release>
   <release version="1.1.4" date="2022-12-06">
    <description>
     <ul>
