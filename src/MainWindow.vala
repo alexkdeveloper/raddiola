@@ -325,6 +325,7 @@ private int mode;
              }
             }
             show_stations();
+            select_item(edit_file.get_basename());
             break;
             case 1:
 	GLib.File file = GLib.File.new_for_path(directory_path+"/"+entry_name.get_text().strip());
@@ -343,6 +344,7 @@ private int mode;
            return;
         }else{
            show_stations();
+           select_item(file.get_basename());
         }
         break;
       }
@@ -385,7 +387,27 @@ private int mode;
               break;
       }
    }
-
+      private void select_item(string item){
+            int index_of_item = 0;
+            try {
+            Dir dir = Dir.open (directory_path, 0);
+            string? name = null;
+            int index = 0;
+            while ((name = dir.read_name ()) != null) {
+                index++;
+                if(name == item){
+                  index_of_item = index - 1;
+                  break;
+                }
+            }
+        } catch (FileError err) {
+            stderr.printf (err.message);
+          }
+           var path = new TreePath.from_indices(index_of_item);
+           var selection = tree_view.get_selection();
+           selection.select_path(path);
+           tree_view.scroll_to_cell(path,null,false,0,0);
+        }
    private void show_stations () {
            list_store.clear();
            list = new GLib.List<string> ();
