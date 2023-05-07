@@ -2,6 +2,7 @@
 <!-- Copyright 2020 Alex Kryuchkov <kryuchkovalex19830609@gmail.com> -->
 <component type="desktop">
   <id>com.github.alexkdeveloper.raddiola</id>
+  <launchable type="desktop-id">com.github.alexkdeveloper.raddiola.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Raddiola</name>
@@ -28,6 +29,13 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
+  <release version="1.1.6" date="2023-05-07">
+   <description>
+    <ul>
+     <li>Added German translation</li>
+    </ul>
+ </description>
+</release>
   <release version="1.1.5" date="2022-12-22">
    <description>
     <ul>
